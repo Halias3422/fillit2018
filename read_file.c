@@ -6,14 +6,14 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/02 12:22:22 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/05 14:05:55 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 14:35:50 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int					ft_check_line(int i, int j, int nb_line, char *f_cont)
+static int			ft_check_line(int i, int j, int nb_line, char *f_cont)
 {
 	while (f_cont[i])
 	{
@@ -42,7 +42,7 @@ int					ft_check_line(int i, int j, int nb_line, char *f_cont)
 	return (1);
 }
 
-int					ft_check_symb(int i, int j, char *f_cont)
+static int			ft_check_symb(int i, int j, char *f_cont)
 {
 	int				nb_symb;
 
@@ -71,7 +71,7 @@ int					ft_check_symb(int i, int j, char *f_cont)
 	return (1);
 }
 
-int					ft_check_errors(char *f_cont)
+static int			ft_check_errors(char *f_cont)
 {
 	int				i;
 	int				j;
@@ -108,7 +108,7 @@ char				*ft_read_and_store_file(int fd)
 	if (ft_check_errors(f_cont) != 1)
 	{
 		write(1, "error\n", 6);
-		exit (-1);
+		exit(-1);
 	}
 	return (f_cont);
 }

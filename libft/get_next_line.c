@@ -6,12 +6,12 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/26 13:29:35 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/02 12:31:04 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 14:32:25 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "includes/get_next_line.h"
+#include "libft.h"
 
 static int			ft_fill_line(char **line, t_gnlist *list, char *str)
 {
@@ -27,7 +27,7 @@ static int			ft_fill_line(char **line, t_gnlist *list, char *str)
 		i++;
 	if (list->str[i] == '\n')
 		new_line = 1;
-	*line = ft_strsub(list->str, 0, i);
+	*line = ft_strsub(list->str, 0, i + new_line);
 	tmp = ft_strsub(list->str, i + new_line, (ft_strlen(str) - (i + new_line)));
 	list->str = ft_strcpy(list->str, tmp);
 	free(tmp);

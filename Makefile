@@ -6,17 +6,18 @@
 #    By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/02 14:34:41 by vde-sain     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/05 14:45:59 by vde-sain    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/07 15:22:47 by vde-sain    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 NAME = fillit
 
-SRC = get_next_line.c \
-	  main.c \
+SRC = main.c \
 	  read_file.c \
-	  fill_list.c
+	  fill_list.c \
+	  create_res_tab.c \
+	  solve_fillit.c
 
 OBJ = $(SRC:.c=.o)
 

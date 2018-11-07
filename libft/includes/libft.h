@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/03 17:33:24 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/12 13:20:23 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 14:32:18 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,6 +17,11 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <fcntl.h>
+
+# define BUFF_SIZE 5
 
 typedef struct		s_list
 {
@@ -25,33 +30,40 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+typedef struct				s_gnlist
+{
+	int				fd;
+	char			*str;
+	struct s_gnlist	*next;
+}					t_gnlist;
+
 /*
-** PART 1 PROTOTYPES
+** PART 1 PROTOTYPES 
 */
 
-void				*ft_memset(void *b, int c, size_t len);
-size_t				ft_strlen(const char *s);
-char				*ft_strdup(const char *s1);
-char				*ft_strcpy(char *dst, const char *src);
-char				*ft_strncpy(char *dst, const char *src, size_t len);
-int					ft_strcmp(const char *s1, const char *s2);
-int					ft_strncmp(const char *s1, const char *s2, size_t n);
-int					ft_atoi(const char *str);
-void				ft_bzero(void *s, size_t n);
-char				*ft_strcat(char *s1, const char *s2);
-char				*ft_strncat(char *s1, char *s2, size_t n);
-size_t				ft_strlcat(char *dst, const char *src, size_t size);
-int					ft_isdigit(int c);
-int					ft_isalpha(int c);
-int					ft_isalnum(int c);
-int					ft_isascii(int c);
-int					ft_isprint(int c);
-int					ft_toupper(int c);
-int					ft_tolower(int c);
-char				*ft_strchr(const char *s, int c);
-char				*ft_strstr(const char *haystack, const char *needle);
-char				*ft_strnstr(const char *haystack, const char *needle,
-		size_t len);
+		void				*ft_memset(void *b, int c, size_t len);
+		size_t				ft_strlen(const char *s);
+		char				*ft_strdup(const char *s1);
+		char				*ft_strcpy(char *dst, const char *src);
+		char				*ft_strncpy(char *dst, const char *src, size_t len);
+		int					ft_strcmp(const char *s1, const char *s2);
+		int					ft_strncmp(const char *s1, const char *s2, size_t n);
+		int					ft_atoi(const char *str);
+		void				ft_bzero(void *s, size_t n);
+		char				*ft_strcat(char *s1, const char *s2);
+		char				*ft_strncat(char *s1, char *s2, size_t n);
+		size_t				ft_strlcat(char *dst, const char *src, size_t size);
+		int					ft_isdigit(int c);
+		int					ft_isalpha(int c);
+		int					ft_isalnum(int c);
+		int					ft_isascii(int c);
+		int					ft_isprint(int c);
+		int					ft_toupper(int c);
+		int					ft_tolower(int c);
+		char				*ft_strchr(const char *s, int c);
+		char				*ft_strstr(const char *haystack, const char *needle);
+		char				*ft_strnstr(const char *haystack, const char *needle,
+				size_t len);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
@@ -60,8 +72,8 @@ int					ft_memcmp(const void *s1, const void *s2, size_t n);
 char				*ft_strrchr(const char *s, int c);
 
 /*
-** PART 2 PROTOTYPES
-*/
+ ** PART 2 PROTOTYPES
+ */
 
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
@@ -89,8 +101,8 @@ void				ft_strdel(char **as);
 char				*ft_itoa(int n);
 
 /*
-** BONUS PROTOTYPES
-*/
+ ** BONUS PROTOTYPES
+ */
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
@@ -100,8 +112,8 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 /*
-** EXTRA PROTOTYPES
-*/
+ ** EXTRA PROTOTYPES
+ */
 
 void				ft_putnstrn(char *str, int n1, int n2);
 char				*ft_strndup(const char *s1, size_t n);
