@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 14:34:16 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 15:59:52 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 18:18:04 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,9 @@
 static int			ft_find_smallest_square(t_fillist *list)
 {
 	int				i;
+	int				original_i;
 	int				j;
+	int				square_verif;
 
 	i = 0;
 	while (list)
@@ -26,48 +28,39 @@ static int			ft_find_smallest_square(t_fillist *list)
 			i++;
 		list = list->next;
 	}
-	return (i);
-}
-
-static char		**fill_tab_points(char **res)
-{
-	int			i;
-	int			j;
-
-	j = 0;
-	while (res[j])
+	square_verif = i / 4;
+	original_i = i;
+	while (square_verif * square_verif < original_i)
 	{
-		i = 0;
-		while(res[j][i])
-		{
-			res[j][i] = '.';
-			printf("TESTres[%d][%d] = %c", j, i, res[j][i]);
-		}
-		j++;
+		i++;
+		square_verif = i / 4;
 	}
-	return (res);
+	return (i);
 }
 
 char			**ft_malloc_tab(t_fillist *list, char **res, int tb_size)
 {
 	int				i;
+	int				j;
 	int				res_min;
 	int				square_size;
 
-	i = 0;
-	res_min = ft_find_smallest_square(list);
+	j = 0;
+	printf("res_min = %d\n", res_min = ft_find_smallest_square(list));
 	square_size = (res_min / 4) + 1;
 	if (!(res = (char**)malloc(sizeof(char*) * (square_size + tb_size))))
 		return (NULL);
-	res[res_min / 4] = NULL;
-	while (i < res_min / 4)
+	while (j < square_size - 1)
 	{
-		if (!(res[i] = (char*)malloc(sizeof(char) * (square_size + tb_size))))
+		i = 0;
+		if (!(res[j] = (char*)malloc(sizeof(char) * (square_size + tb_size))))
 			return (NULL);
-		res[i][res_min / 4] = '\0';
-		i++;
+		while (i < square_size - 1)
+			res[j][i++] = '.';
+		res[j][i] = '\0';
+		j++;
 	}
-	res = fill_tab_points(res);
+	res[j] = NULL;
 	return (res);
 }
 
