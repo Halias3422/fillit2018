@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/02 11:47:45 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/02 19:06:09 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 11:07:36 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,6 +30,7 @@ typedef struct			s_fillist
 	int					tetro_nb;
 	char				**tetros;
 	struct s_fillist	*next;
+//	struct s_fillist	*previous;
 }						t_fillist;
 
 typedef struct			s_gnlist
@@ -41,5 +42,6 @@ typedef struct			s_gnlist
 
 char					*ft_read_and_store_file(int fd);
 int						get_next_line(const int fd, char **line);
+t_fillist				*ft_fill_list(char *f_cont, t_fillist *list);
 
 #endif
