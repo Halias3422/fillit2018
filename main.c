@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 11:41:45 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 18:25:16 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 14:23:14 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,19 +31,30 @@ int					main(int ac, char **av)
 		f_cont = ft_read_and_store_file(fd);
 		close(fd);
 		list = ft_fill_list(f_cont, list);
+/*		while (list)
+		{
+			j = 0;
+			while (list->tetros[j])
+			{
+				printf("%s\n", list->tetros[j]);
+				j++;
+			}
+			list = list->next;
+		}*/
 		res = ft_create_res_tab(list);
+		j = 0;
 			while (res[j])
 		{
 			printf("EMPTYres[%d] = %s\n", j, res[j]);
 			j++;
 		}
 		res = ft_initiate_fill_res_tab(list, res);
-		j = 0;
+/*		j = 0;
 		while (res[j])
 		{
 			printf("FULLres[%d] = %s\n", j, res[j]);
 			j++;
-		}
+		}*/
 	}
 	else
 		ft_putstr(err_str);

@@ -6,7 +6,7 @@
 #    By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/02 14:34:41 by vde-sain     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/07 15:22:47 by vde-sain    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/09 14:56:49 by vde-sain    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -17,13 +17,14 @@ SRC = main.c \
 	  read_file.c \
 	  fill_list.c \
 	  create_res_tab.c \
-	  solve_fillit.c
+	  solve_fillit.c \
+	  check_tetro_placement.c
 
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -g3 -Wall -Werror -Wextra
 
 all: $(NAME)
 

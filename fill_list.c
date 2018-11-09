@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/05 14:06:50 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 13:42:29 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 13:59:31 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -52,6 +52,11 @@ static t_fillist	*ft_malloc_block(char *block, int tetros_nb)
 	if (!(list->tetros = (char**)malloc(sizeof(char*) * 4 + 1)))
 		return (NULL);
 	list = ft_fill_block(block, list, tetros_nb);
+	if (list->tetro_nb > 25)
+	{
+		write (1, "error\n", 6);
+		exit (-1);
+	}
 	list->next = NULL;
 	return (list);
 }

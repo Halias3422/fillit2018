@@ -6,14 +6,14 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 15:22:36 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 18:32:45 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 13:24:27 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int		ft_calculate_dist(t_fillist *list, int first_pos, int left_pos)
+/*static int		ft_calculate_dist(t_fillist *list, int first_pos, int left_pos)
 {
 	int			hor;
 	int			ver;
@@ -45,37 +45,38 @@ static int		ft_calculate_dist(t_fillist *list, int first_pos, int left_pos)
 static char		**ft_place_tetro(char **res, t_fillist *list, int ver, int hor)
 {
 	int			dist;
-	int			t_ver;
-	int			t_hor;
+	int			tab_ver;
+	int			tab_hor;
 	int			tetros_symb;
 
-	t_ver = 0;
+	tab_ver = 0;
 	tetros_symb = 0;
 	printf("dist = %d\n", dist = ft_calculate_dist(list, 4, 4));
-	while (tetros_symb < 4 && list->tetros[t_ver])
+
+	while (tetros_symb < 4 && list->tetros[tab_ver])
 	{
-		t_hor = 0;
-		while (list->tetros[t_ver][t_hor])
+		tab_hor = 0;
+		while (list->tetros[tab_ver][tab_hor])
 		{
 			ft_putstr("bouh");
-			if (list->tetros[t_ver][t_hor] == 'A' + list->tetro_nb)
+			if (list->tetros[tab_ver][tab_hor] == 'A' + list->tetro_nb)
 			{
-				if ((hor + dist) <= (int)ft_strlen(list->tetros[t_ver]))
+				if ((hor + dist) <= (int)ft_strlen(list->tetros[tab_ver]))
 				{
-					res[ver][hor + dist] = list->tetros[t_ver][t_hor];
+					res[ver][hor + dist] = list->tetros[tab_ver][tab_hor];
 					tetros_symb++;
 				}
 				else
 					return (NULL);
 			hor++;
-			t_hor++;
+			tab_hor++;
 			}
-		t_ver++;
+		tab_ver++;
 		ver++;
 		}
 	}
 	return (res);
-}
+}*/
 
 char			**ft_initiate_fill_res_tab(t_fillist *list, char **res)
 {
@@ -86,12 +87,15 @@ char			**ft_initiate_fill_res_tab(t_fillist *list, char **res)
 	while (res[ver] && list != NULL)
 	{
 		hor = 0;
-		while (res[ver][hor])
+		while (res[ver][hor] && list != NULL)
 		{
 			if (res[ver][hor] == '.')
 			{
-				res = ft_place_tetro(res, list, ver, hor);
-				list = list->next;
+				if ((ft_init_verif(res, list, ver, hor)) == 1)
+				{
+					//res = ft_place_tetro(res, list, ver, hor);
+					list = list->next;
+				}
 			}
 			hor++;
 		}
