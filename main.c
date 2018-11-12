@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 11:41:45 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/10 18:39:44 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/12 14:17:52 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,13 +49,14 @@ int					main(int ac, char **av)
 			j++;
 		}
 		res = ft_initiate_fill_res_tab(list, res);
-/*		j = 0;
+		j = 0;
 		while (res[j])
 		{
 			printf("FULLres[%d] = %s\n", j, res[j]);
 			j++;
-		}*/
+		}
 	}
 	else
 		ft_putstr(err_str);
+	return (0);
 }
