@@ -6,12 +6,24 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 11:41:45 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/12 15:19:04 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/12 20:01:57 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+static char				**ft_functions_call(t_fillist *list, char **res)
+{
+	int				*coord;
+
+	if (!(coord = (int*)malloc(sizeof(int) * 2)))
+		return (NULL);
+	coord[0] = 0;
+	coord[1] = 0;
+	res = ft_fill_res_tab(list, res, coord);
+	return (res);
+}
 
 int					main(int ac, char **av)
 {
@@ -48,7 +60,7 @@ int					main(int ac, char **av)
 			printf("EMPTYres[%d] = %s\n", j, res[j]);
 			j++;
 		}
-		res = ft_fill_res_tab(list, res, 0, 0);
+		res = ft_functions_call(list, res);
 		j = 0;
 		while (res[j])
 		{
