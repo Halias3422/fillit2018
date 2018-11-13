@@ -5,8 +5,8 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/07 15:22:36 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/12 20:01:55 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/13 15:11:08 by vde-sain     #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/13 15:19:49 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,10 +14,10 @@
 #include "fillit.h"
 
 /*
-**coord[2] = coordinates of res tab:
-**coord[1] = y
-**coord[0] = x
-*/
+ * **coord[2] = coordinates of res tab:
+ * **coord[1] = y
+ * **coord[0] = x
+ * */
 
 static int		*ft_remove_last_piece(t_fillist *list, char **res, int *coord)
 {
@@ -47,18 +47,18 @@ static int		*ft_remove_last_piece(t_fillist *list, char **res, int *coord)
 	}
 	return (coord);
 }
-
 static char		**ft_rewind(int *coord, t_fillist *tmp, t_fillist *link
-				, char **res)
+		, char **res)
 {
 	printf("len = %d\n", (int)ft_strlen(res[*coord]) - 1);
-	if (coord[1] == (int)ft_strlen(res[*coord]) - 1)
+	if (coord[1] == (int)ft_strlen(res[*coord]))
 	{
+		printf("link->tetro_nb = %d\n", link->tetro_nb);
 		while (tmp->tetro_nb < link->tetro_nb - 1)
 			tmp = tmp->next;
+		printf("tmp->tetro_nb = %d\n", tmp->tetro_nb);
 		link = tmp;
 		coord = ft_remove_last_piece(link, res, coord);
-		ft_putstr("mais le saucisson c'est meilleur\n");
 		int j = 0;
 		while (res[j])
 		{
@@ -66,7 +66,7 @@ static char		**ft_rewind(int *coord, t_fillist *tmp, t_fillist *link
 			j++;
 		}
 /*		if (coord[1] == (int)ft_strlen(res[coord[1] - 1]) &&
-		coord[0] == (int)ft_strlen(res[coord[0] - 1]) && link->tetro_nb == 0)
+			coord[0] == (int)ft_strlen(res[coord[0] - 1]) && link->tetro_nb == 0)
 		{
 			ft_putstr("le jambon c'est bon");
 			res = ft_malloc_tab(link, res, 1);
@@ -76,12 +76,14 @@ static char		**ft_rewind(int *coord, t_fillist *tmp, t_fillist *link
 	return (res);
 }
 
+
 char			**ft_fill_res_tab(t_fillist *list, char **res, int *coord)
 {
 	t_fillist	*link;
 	t_fillist	*tmp;
 
-	tmp = list;
+	if (coord[0] == 0 && coord[1] == 0)
+		tmp = list;
 	link = list;
 	printf("tetro_nb = %d\n", link->tetro_nb);
 	while (res[coord[1]] && link != NULL)
@@ -89,7 +91,7 @@ char			**ft_fill_res_tab(t_fillist *list, char **res, int *coord)
 		while (res[coord[1]][coord[0]] && link != NULL)
 		{
 			if ((res[coord[1]][coord[0]] == '.') && 
-			(ft_init_verif(res, link, coord[1], coord[0])) == 1)
+					(ft_init_verif(res, link, coord[1], coord[0])) == 1)
 			{
 				coord[0] = 0;
 				coord[1] = 0;
@@ -110,3 +112,4 @@ char			**ft_fill_res_tab(t_fillist *list, char **res, int *coord)
 	res = ft_rewind(coord, tmp, link, res);
 	return (res);
 }
+
