@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 14:34:16 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/12 20:01:56 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/13 16:34:11 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,16 +40,15 @@ char			**ft_malloc_tab(t_fillist *list, char **res, int tb_size)
 	int				res_min;
 
 	j = 0;
-	printf("res_min = %d\n", res_min = ft_find_smallest_square(list));
-	//square_size = (res_min / 4) + 1;
+	res_min = ft_find_smallest_square(list);
 	if (!(res = (char**)malloc(sizeof(char*) * (res_min + tb_size + 1))))
 		return (NULL);
-	while (j < res_min)
+	while (j < res_min + tb_size)
 	{
 		i = 0;
 		if (!(res[j] = (char*)malloc(sizeof(char) * (res_min + tb_size + 1))))
 			return (NULL);
-		while (i < res_min)
+		while (i < res_min + tb_size)
 			res[j][i++] = '.';
 		res[j][i] = '\0';
 		j++;

@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 11:55:23 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/12 14:51:14 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/13 16:29:18 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -107,11 +107,7 @@ int				ft_verif_place(char **res, int y, int x, char *form)
 			check++;
 	}
 	if (check == (int)ft_strlen(form))
-	{
-		printf("return1\n");
 			return (1);
-	}
-	printf("return-1\n");
 	return (-1);
 }
 
