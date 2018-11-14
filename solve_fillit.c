@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 15:11:08 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 14:15:04 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 14:46:58 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -79,7 +79,7 @@ static char		**ft_rewind(int *coord, t_fillist *tmp, t_fillist *link
 			tmp = tmp->next;
 		link = tmp;
 		}
-		if (link->next != NULL)
+		if (link->next != NULL && link->tetro_nb > 0)
 			coord = ft_remove_last_piece(link, res, coord);
 		else
 			ft_fill_coord(coord, len, 1);
