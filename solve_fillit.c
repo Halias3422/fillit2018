@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 15:11:08 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 14:46:58 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 15:10:59 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,6 +63,26 @@ int				*ft_fill_coord(int *coord, int len, int usage)
 	return (coord);
 }
 
+static int		ft_check_before_remove(char **res)
+{
+	int			i;
+	int			j;
+
+	j = 0;
+	while (res[j])
+	{
+		i = 0;
+		while (res[j][i])
+		{
+			if (res[j][i] != '.')
+				return (1);
+			i++;
+		}
+		j++;
+	}
+	return (0);
+}
+
 static char		**ft_rewind(int *coord, t_fillist *tmp, t_fillist *link
 		, char **res)
 {
@@ -79,20 +99,13 @@ static char		**ft_rewind(int *coord, t_fillist *tmp, t_fillist *link
 			tmp = tmp->next;
 		link = tmp;
 		}
-		if (link->next != NULL && link->tetro_nb > 0)
+		if ((link->next != NULL && ft_check_before_remove(res) == 1))
 			coord = ft_remove_last_piece(link, res, coord);
 		else
 			ft_fill_coord(coord, len, 1);
-		printf("coord[0] = %d coord[1] = %d tetro_nb = %d\n", coord[0], coord[1], link->tetro_nb);
 		if (coord[1] >= len && coord[0] >= len && link->tetro_nb == 0)
 		{
 			res = ft_malloc_tab(head, res, ++coord[2]);
-			int j = 0;
-			while (res[j])
-			{
-				printf("AFTER MALLOC res[%d] = %s\n", j, res[j]);
-				j++;
-			}
 			link = head;
 			ft_fill_coord(coord, len, 0);
 		}

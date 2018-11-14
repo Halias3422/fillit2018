@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/02 11:47:45 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/12 20:01:58 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 15:10:09 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,8 +20,6 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include "libft/includes/libft.h"
-
-# include <stdio.h>
 
 typedef struct			s_fillist
 {
