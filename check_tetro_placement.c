@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 11:55:23 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 16:29:18 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 14:40:49 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,6 +62,12 @@ static char			*ft_find_form(t_fillist *list, int x, int y, char *form)
 	co[2] = 0;
 	co[3] = 0;
 	form = ft_fill_form(list->tetros, co, form, t_symb);
+	if (ft_strlen(form) < 3 || (ft_strlen(form) == 3 && form[0] == 'd'
+		&& form[1] == 'g' && form[2] == 'd'))
+	{
+		write(1, "error\n", 6);
+		exit(-1);
+	}
 	return (form);
 }
 

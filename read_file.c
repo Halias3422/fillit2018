@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/02 12:22:22 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 14:35:50 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 14:42:59 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,6 +39,8 @@ static int			ft_check_line(int i, int j, int nb_line, char *f_cont)
 			return (-1);
 		j = 0;
 	}
+	if (nb_line % 4 != 0)
+		return (-1);
 	return (1);
 }
 
@@ -82,6 +84,11 @@ static int			ft_check_errors(char *f_cont)
 	i = 0;
 	j = 0;
 	not_error = -1;
+	if (f_cont[0] == '\0')
+	{
+		write(1, "error\n", 6);
+		exit(-1);
+	}
 	if (ft_check_line(i, j, nb_line, f_cont) == 1)
 		not_error++;
 	if (not_error == 0 && ft_check_symb(i, j, f_cont) == 1)
