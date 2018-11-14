@@ -6,14 +6,14 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 11:41:45 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 14:02:12 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 15:13:55 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static char				**ft_functions_call(t_fillist *list, char **res)
+static char			**ft_functions_call(t_fillist *list, char **res)
 {
 	int				*coord;
 
@@ -42,9 +42,7 @@ int					main(int ac, char **av)
 	char			*f_cont;
 	t_fillist		*list;
 	char			**res;
-	int				j;
 
-	j = 0;
 	list = NULL;
 	err_str = "usage: ./fillit target_file\n";
 	if (ac == 2)

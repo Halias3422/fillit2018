@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 14:34:16 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 16:34:11 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 15:13:21 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,9 +35,9 @@ static int		ft_find_smallest_square(t_fillist *list)
 
 char			**ft_malloc_tab(t_fillist *list, char **res, int tb_size)
 {
-	int				i;
-	int				j;
-	int				res_min;
+	int			i;
+	int			j;
+	int			res_min;
 
 	j = 0;
 	res_min = ft_find_smallest_square(list);
@@ -57,10 +57,10 @@ char			**ft_malloc_tab(t_fillist *list, char **res, int tb_size)
 	return (res);
 }
 
-char				**ft_create_res_tab(t_fillist *list)
+char			**ft_create_res_tab(t_fillist *list)
 {
-	char			**res;
-	int				tab_size;
+	char		**res;
+	int			tab_size;
 
 	res = NULL;
 	tab_size = 0;

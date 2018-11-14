@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/02 11:47:45 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 15:10:09 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 15:14:48 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,9 +32,11 @@ char					*ft_read_and_store_file(int fd);
 int						get_next_line(const int fd, char **line);
 t_fillist				*ft_fill_list(char *f_cont, t_fillist *list);
 char					**ft_create_res_tab(t_fillist *list);
-char					**ft_malloc_tab(t_fillist *list, char **res, int tb_size);
+char					**ft_malloc_tab(t_fillist *list, char **res,
+						int tb_size);
 char					**ft_size_tab(t_fillist *list, char **res, int tb_size);
-char					**ft_fill_res_tab(t_fillist *list, char **res, int *coord);
+char					**ft_fill_res_tab(t_fillist *list, char **res,
+						int *coord);
 int						ft_init_verif(char **res, t_fillist *list, int ver,
 						int hor);
 

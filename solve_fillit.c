@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 15:11:08 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 15:10:59 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 15:21:32 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,10 +14,10 @@
 #include "fillit.h"
 
 /*
- * **coord[2] = coordinates of res tab:
- * **coord[1] = y
- * **coord[0] = x
- * */
+**coord[2] = coordinates of res tab:
+**coord[1] = y
+**coord[0] = x
+*/
 
 static int		*ft_remove_last_piece(t_fillist *list, char **res, int *coord)
 {
@@ -84,7 +84,7 @@ static int		ft_check_before_remove(char **res)
 }
 
 static char		**ft_rewind(int *coord, t_fillist *tmp, t_fillist *link
-		, char **res)
+				, char **res)
 {
 	t_fillist	*head;
 	int			len;
@@ -114,7 +114,6 @@ static char		**ft_rewind(int *coord, t_fillist *tmp, t_fillist *link
 	return (res);
 }
 
-
 char			**ft_fill_res_tab(t_fillist *list, char **res, int *coord)
 {
 	t_fillist	*link;
@@ -142,4 +141,3 @@ static t_fillist*tmp;
 	res = ft_rewind(coord, tmp, link, res);
 	return (res);
 }
-

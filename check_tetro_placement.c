@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 11:55:23 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 14:40:49 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 15:19:11 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,7 @@
 ** co[3] = done
 */
 
-static char			*ft_fill_form(char **tetros, int *co, char *form, 
+static char			*ft_fill_form(char **tetros, int *co, char *form,
 					char t_symb)
 {
 	while (co[3] == 0 && co[1] < 4 && co[0] < 4)
@@ -53,8 +53,8 @@ static char			*ft_fill_form(char **tetros, int *co, char *form,
 
 static char			*ft_find_form(t_fillist *list, int x, int y, char *form)
 {
-	char		t_symb;
-	int			co[4];
+	char			t_symb;
+	int				co[4];
 
 	t_symb = 'A' + list->tetro_nb;
 	co[0] = x;
@@ -73,10 +73,10 @@ static char			*ft_find_form(t_fillist *list, int x, int y, char *form)
 
 static char			*ft_verif_form(t_fillist *list, char *form)
 {
-	int			y;
-	int			x;
-	int			i;
-	char		tetro_symb;
+	int				y;
+	int				x;
+	int				i;
+	char			tetro_symb;
 
 	tetro_symb = 'A' + list->tetro_nb;
 	y = 0;
@@ -96,10 +96,10 @@ static char			*ft_verif_form(t_fillist *list, char *form)
 	return (form);
 }
 
-int				ft_verif_place(char **res, int y, int x, char *form)
+int					ft_verif_place(char **res, int y, int x, char *form)
 {
-	int			i;
-	int			check;
+	int				i;
+	int				check;
 
 	i = -1;
 	check = 0;
@@ -113,15 +113,15 @@ int				ft_verif_place(char **res, int y, int x, char *form)
 			check++;
 	}
 	if (check == (int)ft_strlen(form))
-			return (1);
+		return (1);
 	return (-1);
 }
 
-int				ft_init_verif(char **res, t_fillist *list, int y, int x)
+int					ft_init_verif(char **res, t_fillist *list, int y, int x)
 {
-	char		*form;
-	char		tetro_symb;
-	int			i;
+	char			*form;
+	char			tetro_symb;
+	int				i;
 
 	i = 0;
 	tetro_symb = 'A' + list->tetro_nb;

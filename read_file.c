@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/02 12:22:22 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 14:42:59 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 15:17:15 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,11 +19,8 @@ static int			ft_check_line(int i, int j, int nb_line, char *f_cont)
 	{
 		while (j < 4)
 		{
-			if (f_cont[i] == '.' || f_cont[i] == '#')
-			{
+			if ((f_cont[i] == '.' || f_cont[i] == '#') && j++ >= 0)
 				i++;
-				j++;
-			}
 			else
 				return (-1);
 		}
