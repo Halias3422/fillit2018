@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 11:41:45 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 16:30:31 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 14:02:12 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,12 +17,22 @@ static char				**ft_functions_call(t_fillist *list, char **res)
 {
 	int				*coord;
 
-	if (!(coord = (int*)malloc(sizeof(int) * 2)))
+	if (!(coord = (int*)malloc(sizeof(int) * 3)))
 		return (NULL);
 	coord[0] = 0;
 	coord[1] = 0;
+	coord[2] = 0;
 	res = ft_fill_res_tab(list, res, coord);
 	return (res);
+}
+
+void				ft_aff_res(char **str)
+{
+	int				i;
+
+	i = 0;
+	while (str[i])
+		ft_putendl(str[i++]);
 }
 
 int					main(int ac, char **av)
@@ -43,24 +53,9 @@ int					main(int ac, char **av)
 		f_cont = ft_read_and_store_file(fd);
 		close(fd);
 		list = ft_fill_list(f_cont, list);
-/*		while (list)
-		{
-			j = 0;
-			while (list->tetros[j])
-			{
-				printf("%s\n", list->tetros[j]);
-				j++;
-			}
-			list = list->next;
-		}*/
 		res = ft_create_res_tab(list);
 		res = ft_functions_call(list, res);
-		j = 0;
-		while (res[j])
-		{
-			printf("FULLres[%d] = %s\n", j, res[j]);
-			j++;
-		}
+		ft_aff_res(res);
 	}
 	else
 		ft_putstr(err_str);
