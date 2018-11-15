@@ -6,24 +6,25 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 15:11:08 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 15:21:32 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/15 12:41:16 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
+#include <stdio.h>
 /*
 **coord[2] = coordinates of res tab:
 **coord[1] = y
 **coord[0] = x
 */
 
-static int		*ft_remove_last_piece(t_fillist *list, char **res, int *coord)
+static int			*ft_remove_last_piece(t_fillist *list, char **res
+					, int *coord)
 {
-	int			first;
-	int			y;
-	int			x;
+	int				first;
+	int				y;
+	int				x;
 
 	y = 0;
 	first = 0;
@@ -48,7 +49,7 @@ static int		*ft_remove_last_piece(t_fillist *list, char **res, int *coord)
 	return (coord);
 }
 
-int				*ft_fill_coord(int *coord, int len, int usage)
+int					*ft_fill_coord(int *coord, int len, int usage)
 {
 	if (usage == 0)
 	{
@@ -63,10 +64,10 @@ int				*ft_fill_coord(int *coord, int len, int usage)
 	return (coord);
 }
 
-static int		ft_check_before_remove(char **res)
+static int			ft_check_before_remove(char **res, t_fillist *list)
 {
-	int			i;
-	int			j;
+	int				i;
+	int				j;
 
 	j = 0;
 	while (res[j])
@@ -74,7 +75,7 @@ static int		ft_check_before_remove(char **res)
 		i = 0;
 		while (res[j][i])
 		{
-			if (res[j][i] != '.')
+			if (res[j][i] == 'A' + list->tetro_nb)
 				return (1);
 			i++;
 		}
@@ -83,23 +84,20 @@ static int		ft_check_before_remove(char **res)
 	return (0);
 }
 
-static char		**ft_rewind(int *coord, t_fillist *tmp, t_fillist *link
-				, char **res)
+static char			**ft_rewind(int *coord, t_fillist *tmp, t_fillist *link
+					, char **res)
 {
-	t_fillist	*head;
-	int			len;
+	t_fillist		*head;
+	int				len;
 
 	len = (int)ft_strlen(res[*coord]);
 	head = tmp;
 	if (coord[1] == len)
 	{
-		if (tmp->next != NULL)
-		{
-		while (tmp->next->tetro_nb < link->tetro_nb)
+		while (tmp->next != NULL && (tmp->next->tetro_nb < link->tetro_nb))
 			tmp = tmp->next;
 		link = tmp;
-		}
-		if ((link->next != NULL && ft_check_before_remove(res) == 1))
+		if ((link->next != NULL && ft_check_before_remove(res, link) == 1))
 			coord = ft_remove_last_piece(link, res, coord);
 		else
 			ft_fill_coord(coord, len, 1);
@@ -114,10 +112,10 @@ static char		**ft_rewind(int *coord, t_fillist *tmp, t_fillist *link
 	return (res);
 }
 
-char			**ft_fill_res_tab(t_fillist *list, char **res, int *coord)
+char				**ft_fill_res_tab(t_fillist *list, char **res, int *coord)
 {
-	t_fillist	*link;
-static t_fillist*tmp;
+	t_fillist		*link;
+	static t_fillist*tmp;
 
 	if (coord[0] == 0 && coord[1] == 0)
 		tmp = list;
@@ -126,7 +124,7 @@ static t_fillist*tmp;
 	{
 		while (res[coord[1]][coord[0]] && link != NULL)
 		{
-			if ((res[coord[1]][coord[0]] == '.') && 
+			if ((res[coord[1]][coord[0]] == '.') &&
 					(ft_init_verif(res, link, coord[1], coord[0])) == 1)
 			{
 				coord[0] = -1;

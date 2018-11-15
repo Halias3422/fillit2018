@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 11:41:45 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 15:13:55 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 16:51:33 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,9 +51,12 @@ int					main(int ac, char **av)
 		f_cont = ft_read_and_store_file(fd);
 		close(fd);
 		list = ft_fill_list(f_cont, list);
+		free (f_cont);
 		res = ft_create_res_tab(list);
 		res = ft_functions_call(list, res);
+		free (list);
 		ft_aff_res(res);
+		free (res);
 	}
 	else
 		ft_putstr(err_str);

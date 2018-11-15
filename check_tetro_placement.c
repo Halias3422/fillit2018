@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 11:55:23 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 15:19:11 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/15 13:32:36 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -90,7 +90,7 @@ static char			*ft_verif_form(t_fillist *list, char *form)
 		if (list->tetros[y][x] != 'A' + list->tetro_nb)
 			y++;
 	}
-	if (!(form = ft_strnew(9)))
+	if (!(form = ft_strnew(10)))
 		return (NULL);
 	form = ft_find_form(list, x, y, form);
 	return (form);
@@ -101,9 +101,9 @@ int					ft_verif_place(char **res, int y, int x, char *form)
 	int				i;
 	int				check;
 
-	i = -1;
+	i = 0;
 	check = 0;
-	while (++i >= 0 && res[y] && res[y][x] && form[i])
+	while (res[y] && res[y][x] && form[i])
 	{
 		if (res[y][x + 1] && form[i] == 'd' && res[y][x + 1] == '.' && x++ >= 0)
 			check++;
@@ -111,6 +111,7 @@ int					ft_verif_place(char **res, int y, int x, char *form)
 			check++;
 		if (res[y + 1] && form[i] == 'b' && res[y + 1][x] == '.' && y++ >= 0)
 			check++;
+		i++;
 	}
 	if (check == (int)ft_strlen(form))
 		return (1);
@@ -140,6 +141,7 @@ int					ft_init_verif(char **res, t_fillist *list, int y, int x)
 				res[++y][x] = tetro_symb;
 			i++;
 		}
+		free (form);
 		return (1);
 	}
 	return (-1);

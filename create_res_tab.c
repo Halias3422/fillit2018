@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 14:34:16 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 15:13:21 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 16:22:48 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,6 +40,8 @@ char			**ft_malloc_tab(t_fillist *list, char **res, int tb_size)
 	int			res_min;
 
 	j = 0;
+	if (res != NULL)
+		free (res);
 	res_min = ft_find_smallest_square(list);
 	if (!(res = (char**)malloc(sizeof(char*) * (res_min + tb_size + 1))))
 		return (NULL);

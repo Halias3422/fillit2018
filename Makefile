@@ -6,7 +6,7 @@
 #    By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/02 14:34:41 by vde-sain     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/09 14:56:49 by vde-sain    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/15 13:12:44 by vde-sain    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -24,7 +24,7 @@ OBJ = $(SRC:.c=.o)
 
 CC = gcc
 
-FLAGS = -g3 -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 

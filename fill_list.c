@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/05 14:06:50 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 15:14:11 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/15 12:58:07 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -103,5 +103,6 @@ t_fillist			*ft_fill_list(char *f_cont, t_fillist *list)
 		if (f_cont[i] == '\n' && f_cont[i + 1] == '\0')
 			i++;
 	}
+	free (block);
 	return (head);
 }
