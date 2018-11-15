@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 11:55:23 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 13:32:36 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/15 13:33:27 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -101,9 +101,9 @@ int					ft_verif_place(char **res, int y, int x, char *form)
 	int				i;
 	int				check;
 
-	i = 0;
+	i = -1;
 	check = 0;
-	while (res[y] && res[y][x] && form[i])
+	while (++i >= 0 && res[y] && res[y][x] && form[i])
 	{
 		if (res[y][x + 1] && form[i] == 'd' && res[y][x + 1] == '.' && x++ >= 0)
 			check++;
@@ -111,7 +111,6 @@ int					ft_verif_place(char **res, int y, int x, char *form)
 			check++;
 		if (res[y + 1] && form[i] == 'b' && res[y + 1][x] == '.' && y++ >= 0)
 			check++;
-		i++;
 	}
 	if (check == (int)ft_strlen(form))
 		return (1);
