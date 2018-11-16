@@ -6,7 +6,7 @@
 #    By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/03 17:34:31 by vde-sain     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/16 14:35:28 by vde-sain    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/16 18:38:52 by vde-sain    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -89,7 +89,7 @@ $(NAME): $(OBJ)
 		ranlib $(NAME)
 
 %.o: %.c
-		gcc -c -Wall -Werror -Wextra -I./includes $(SRC)
+		gcc -c -Wall -Werror -Wextra -I. $(SRC)
 
 clean:
 		rm -f *.o
