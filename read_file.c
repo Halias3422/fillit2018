@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/02 12:22:22 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 15:17:15 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/15 15:42:19 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,6 +41,37 @@ static int			ft_check_line(int i, int j, int nb_line, char *f_cont)
 	return (1);
 }
 
+static int			ft_check_surrounding(char *f_cont, int i)
+{
+	int				ret;
+
+	ret = 0;
+	if (f_cont[i] == '#')
+	{
+		if (i - 1 >= 0)
+		{
+			if (f_cont[i - 1] == '#')
+				ret++;
+		}
+		if (i + 1 < (int)ft_strlen(f_cont))
+		{
+			if (f_cont[i + 1] == '#')
+				ret++;
+		}
+		if (i + 5 < (int)ft_strlen(f_cont))
+		{
+			if (f_cont[i + 5] == '#')
+				ret++;
+		}
+		if (i - 5 >= 0)
+		{
+			if (f_cont[i - 5] == '#')
+				ret++;
+		}
+	}
+	return (ret);
+}
+
 static int			ft_check_symb(int i, int j, char *f_cont)
 {
 	int				nb_symb;
@@ -50,9 +81,11 @@ static int			ft_check_symb(int i, int j, char *f_cont)
 		nb_symb = 0;
 		while (j < 20)
 		{
-			if (f_cont[i] == '#' && ((f_cont[i - 1] == '#' ||
+/*			if (f_cont[i] == '#' && ((f_cont[i - 1] == '#' ||
 				f_cont[i + 1] == '#' || f_cont[i + 5] == '#' ||
 				f_cont[i - 5] == '#')))
+				nb_symb++;*/
+			if (ft_check_surrounding(f_cont, i) > 0)
 				nb_symb++;
 			else if (f_cont[i] == '#')
 				return (-1);
@@ -60,8 +93,11 @@ static int			ft_check_symb(int i, int j, char *f_cont)
 			j++;
 		}
 		j = 0;
+		if (i + 1 == (int)ft_strlen(f_cont))
+		{
 		if (nb_symb == 4 && f_cont[i + 1] == '\0')
 			return (1);
+		}
 		if (nb_symb != 4)
 			return (-1);
 		while (f_cont[i] == '\n')

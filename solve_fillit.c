@@ -6,13 +6,14 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 15:11:08 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 12:41:16 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/15 15:04:54 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
+
 /*
 **coord[2] = coordinates of res tab:
 **coord[1] = y
