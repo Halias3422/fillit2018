@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 11:41:45 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 15:04:37 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 15:06:08 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@ static char			**ft_functions_call(t_fillist *list, char **res)
 	t_fillist		*head;
 
 	head = list;
-	if (!(coord = (int*)malloc(sizeof(int) * 3)))
+	if (!(coord = (int*)malloc(sizeof(coord) * 3)))
 		return (NULL);
 	coord[0] = 0;
 	coord[1] = 0;

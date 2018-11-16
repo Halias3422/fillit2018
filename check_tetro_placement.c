@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 11:55:23 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 17:25:28 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 14:17:06 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,7 +77,7 @@ static char			*ft_find_form(t_fillist *list, int x, int y, char *form)
 	return (form);
 }
 
-static char			*ft_verif_form(t_fillist *list, char *form)
+char			*ft_verif_form(t_fillist *list, char *form)
 {
 	int				y;
 	int				x;
@@ -96,8 +96,6 @@ static char			*ft_verif_form(t_fillist *list, char *form)
 		if (list->tetros[y][x] != 'A' + list->tetro_nb)
 			y++;
 	}
-	if (form != NULL)
-		free (form);
 	if (!(form = ft_strnew(10)))
 		return (NULL);
 	form = ft_find_form(list, x, y, form);
@@ -108,12 +106,14 @@ int					ft_verif_place(char **res, int y, int x, char *form)
 {
 	int				i;
 	int				check;
+	int				len;
 
+	len = (int)ft_strlen(res[y]);
 	i = -1;
 	check = 0;
 	while (++i >= 0 && res[y] && res[y][x] && form[i])
 	{
-		if (form[i] == 'd' && x + 1 < (int)ft_strlen(res[y]))
+		if (form[i] == 'd' && x + 1 < len)
 		{
 		if (res[y][x + 1] && form[i] == 'd' && res[y][x + 1] == '.' && x++ >= 0)
 			check++;
@@ -123,7 +123,7 @@ int					ft_verif_place(char **res, int y, int x, char *form)
 		if (res[y][x - 1] && form[i] == 'g' && res[y][x - 1] == '.' && x-- >= 0)
 			check++;
 		}
-		if (form[i] == 'b' && y + 1 < (int)ft_strlen(res[y]))
+		if (form[i] == 'b' && y + 1 < len)
 		{
 		if (res[y + 1] && form[i] == 'b' && res[y + 1][x] == '.' && y++ >= 0)
 			check++;
@@ -136,28 +136,24 @@ int					ft_verif_place(char **res, int y, int x, char *form)
 
 int					ft_init_verif(char **res, t_fillist *list, int y, int x)
 {
-	char			*form;
 	char			tetro_symb;
 	int				i;
 
 	i = 0;
 	tetro_symb = 'A' + list->tetro_nb;
-	form = NULL;
-	form = ft_verif_form(list, form);
-	if (ft_verif_place(res, y, x, form) == 1)
+	if (ft_verif_place(res, y, x, list->form) == 1)
 	{
 		res[y][x] = tetro_symb;
-		while (form[i])
+		while (list->form[i])
 		{
-			if (form[i] == 'd')
+			if (list->form[i] == 'd')
 				res[y][++x] = tetro_symb;
-			if (form[i] == 'g')
+			if (list->form[i] == 'g')
 				res[y][--x] = tetro_symb;
-			if (form[i] == 'b')
+			if (list->form[i] == 'b')
 				res[++y][x] = tetro_symb;
 			i++;
 		}
-		free (form);
 		return (1);
 	}
 	return (-1);
