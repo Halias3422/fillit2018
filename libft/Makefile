@@ -6,7 +6,7 @@
 #    By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/03 17:34:31 by vde-sain     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/16 18:38:52 by vde-sain    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/16 19:11:14 by vde-sain    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -77,24 +77,23 @@ SRC = ft_memset.c \
 	  ft_isupper.c \
 	  ft_list_last.c \
 	  ft_range.c \
-	  get_next_line.c \
-	  ft_mystrlen.c
+	  get_next_line.c 
 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		ar rcs $(NAME) $(OBJ)
-		ranlib $(NAME)
+		@ar rcs $(NAME) $(OBJ)
+		@ranlib $(NAME)
 
 %.o: %.c
-		gcc -c -Wall -Werror -Wextra -I. $(SRC)
+		@gcc -c -Wall -Werror -Wextra -I. $(SRC)
 
 clean:
-		rm -f *.o
+		@rm -f *.o
 
 fclean: clean
-		rm -f $(NAME)
+		@rm -f $(NAME)
 
 re: fclean all
