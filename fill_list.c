@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/05 14:06:50 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 11:53:37 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 17:48:56 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,7 +28,7 @@ static t_fillist	*ft_fill_block(char *block, t_fillist *list, int tetros_nb)
 	{
 		if (!(list->tetros[j] = (char*)malloc(sizeof(char) * 4 + 1)))
 			return (NULL);
-			while (i < 4)
+		while (i < 4)
 		{
 			list->tetros[j][i] = block[k++];
 			if (list->tetros[j][i] == '#')
@@ -105,6 +105,6 @@ t_fillist			*ft_fill_list(char *f_cont, t_fillist *list)
 		if (f_cont[i] == '\n' && f_cont[i + 1] == '\0')
 			i++;
 	}
-	free (block);
+	free(block);
 	return (head);
 }

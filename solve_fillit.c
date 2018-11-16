@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 15:11:08 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 16:15:33 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 18:27:25 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,12 +36,13 @@ static int			*ft_rewind(int *coord, t_fillist *tmp, t_fillist *link
 	return (coord);
 }
 
-static t_fillist		*ft_res_filling_error(t_fillist *link, char ***res, int *coord
-					, t_fillist *tmp)
+static t_fillist	*ft_res_filling_error(t_fillist *link, char ***res,
+					int *coord, t_fillist *tmp)
 {
-	if (link != NULL && link->tetro_nb == 0 && ft_check_before_remove(*res, link) == 0)
+	if (link != NULL && link->tetro_nb == 0 &&
+			ft_check_before_remove(*res, link) == 0)
 	{
-		*res = ft_malloc_tab(tmp, *res, ++coord[2]);
+		*res = ft_malloc_tab(tmp, *res, ++coord[2], 0);
 		coord = ft_fill_coord(coord);
 	}
 	else if (link != NULL)
@@ -56,7 +57,7 @@ char				**ft_fill_res_tab(t_fillist *list, char **res, int *coord,
 					t_fillist *link)
 {
 	t_fillist		*tmp;
-	
+
 	if (coord[0] == 0 && coord[1] == 0)
 		tmp = list;
 	while (link != NULL)

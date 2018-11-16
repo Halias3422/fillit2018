@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 11:41:45 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 16:06:07 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 18:19:34 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,16 +25,44 @@ static char			**ft_functions_call(t_fillist *list, char **res)
 	coord[1] = 0;
 	coord[2] = 0;
 	res = ft_fill_res_tab(list, res, coord, link);
+	free(coord);
 	return (res);
 }
 
-void				ft_aff_res(char **str)
+static char			**ft_aff_res(char **str)
 {
 	int				i;
 
 	i = 0;
 	while (str[i])
 		ft_putendl(str[i++]);
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
+	return (str);
+}
+
+static void			ft_free_list(t_fillist **list)
+{
+	t_fillist		*lst;
+	t_fillist		*data;
+	int				i;
+
+	data = *list;
+	while (data)
+	{
+		i = 0;
+		lst = data->next;
+		while (data->tetros[i])
+			free(data->tetros[i++]);
+		free(data->tetros);
+		free(data->form);
+		data->tetro_nb = 0;
+		free(data);
+		data = lst;
+	}
+	*list = NULL;
 }
 
 int					main(int ac, char **av)
@@ -53,12 +81,11 @@ int					main(int ac, char **av)
 		f_cont = ft_read_and_store_file(fd);
 		close(fd);
 		list = ft_fill_list(f_cont, list);
-		free (f_cont);
+		free(f_cont);
 		res = ft_create_res_tab(list);
 		res = ft_functions_call(list, res);
-		free (list);
-		ft_aff_res(res);
-		free (res);
+		res = ft_aff_res(res);
+		ft_free_list(&list);
 	}
 	else
 		ft_putstr(err_str);

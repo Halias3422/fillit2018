@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 11:55:23 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 14:17:06 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 18:21:42 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,35 +22,23 @@
 */
 
 static char			*ft_fill_form(char **tetros, int *co, char *form,
-					char t_symb)
+		char t_symb)
 {
 	while (co[3] == 0 && co[1] < 4 && co[0] < 4 && co[1] >= 0 && co[0] >= 0)
 	{
-		while (co[1] < 4 && co[0] + 1 < 4 && tetros[co[1]][co[0] + 1] == t_symb && co[0]++ >= 0)
+		while (co[1] < 4 && co[0] + 1 < 4 && tetros[co[1]][co[0] + 1] == t_symb
+				&& co[0]++ >= 0)
 			form[co[2]++] = 'd';
-		while (co[1] >= 0 && co[0] - 1 >= 0 && tetros[co[1]][co[0] - 1] == t_symb && co[3] == 0 && co[0]-- >= 0)
+		while (co[1] >= 0 && co[0] - 1 >= 0 && tetros[co[1]][co[0] - 1] ==
+				t_symb && co[3] == 0 && co[0]-- >= 0)
 			form[co[2]++] = 'g';
 		co[3]++;
-		while (co[1] < 4 && co[0] + 1 < 4 && tetros[co[1]][co[0] + 1] == t_symb && co[3] == 1)
-		{
-			if (co[1] + 1 < (int)ft_strlen(tetros[co[1]]))
-			{
-			if (tetros[co[1] + 1] && tetros[co[1] + 1][co[0]] == t_symb)
-			{
-				form[co[2]++] = 'b';
-				co[1]++;
-				co[3] = 0;
-				break ;
-			}
-			}
-			form[co[2]++] = 'd';
-			co[0]++;
-		}
+		ft_lighten_fill_form(co, form, t_symb, tetros);
 		if (co[1] + 1 < (int)ft_strlen(tetros[co[1]]))
 		{
-		if (tetros[co[1] + 1] && tetros[co[1] + 1][co[0]] == t_symb &&
-				co[1]++ >= 0 && co[3]-- >= 0)
-			form[co[2]++] = 'b';
+			if (tetros[co[1] + 1] && tetros[co[1] + 1][co[0]] == t_symb &&
+					co[1]++ >= 0 && co[3]-- >= 0)
+				form[co[2]++] = 'b';
 		}
 	}
 	form[co[2]] = '\0';
@@ -69,7 +57,7 @@ static char			*ft_find_form(t_fillist *list, int x, int y, char *form)
 	co[3] = 0;
 	form = ft_fill_form(list->tetros, co, form, t_symb);
 	if (ft_strlen(form) < 3 || (ft_strlen(form) == 3 && form[0] == 'd'
-		&& form[1] == 'g' && form[2] == 'd'))
+				&& form[1] == 'g' && form[2] == 'd'))
 	{
 		write(1, "error\n", 6);
 		exit(-1);
@@ -77,7 +65,7 @@ static char			*ft_find_form(t_fillist *list, int x, int y, char *form)
 	return (form);
 }
 
-char			*ft_verif_form(t_fillist *list, char *form)
+char				*ft_verif_form(t_fillist *list, char *form)
 {
 	int				y;
 	int				x;
@@ -113,21 +101,15 @@ int					ft_verif_place(char **res, int y, int x, char *form)
 	check = 0;
 	while (++i >= 0 && res[y] && res[y][x] && form[i])
 	{
-		if (form[i] == 'd' && x + 1 < len)
-		{
-		if (res[y][x + 1] && form[i] == 'd' && res[y][x + 1] == '.' && x++ >= 0)
+		if (form[i] == 'd' && x + 1 < len && (res[y][x + 1] &&
+					form[i] == 'd' && res[y][x + 1] == '.' && x++ >= 0))
 			check++;
-		}
-		if (form[i] == 'g' && x - 1 >= 0)
-		{
-		if (res[y][x - 1] && form[i] == 'g' && res[y][x - 1] == '.' && x-- >= 0)
+		if (form[i] == 'g' && x - 1 >= 0 && (res[y][x - 1] &&
+					form[i] == 'g' && res[y][x - 1] == '.' && x-- >= 0))
 			check++;
-		}
-		if (form[i] == 'b' && y + 1 < len)
-		{
-		if (res[y + 1] && form[i] == 'b' && res[y + 1][x] == '.' && y++ >= 0)
+		if (form[i] == 'b' && y + 1 < len && (res[y + 1] &&
+					form[i] == 'b' && res[y + 1][x] == '.' && y++ >= 0))
 			check++;
-		}
 	}
 	if (check == (int)ft_strlen(form))
 		return (1);
