@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/02 12:22:22 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 17:54:15 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/18 11:47:29 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -124,12 +124,10 @@ static int			ft_check_errors(char *f_cont)
 char				*ft_read_and_store_file(int fd)
 {
 	char			*line;
-	int				error;
 	char			*f_cont;
 	char			*tmp;
 
 	f_cont = ft_strnew(1);
-	error = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
 		tmp = ft_strjoin(f_cont, line);

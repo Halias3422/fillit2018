@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 11:55:23 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 18:21:42 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/18 11:48:02 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -69,12 +69,8 @@ char				*ft_verif_form(t_fillist *list, char *form)
 {
 	int				y;
 	int				x;
-	int				i;
-	char			tetro_symb;
 
-	tetro_symb = 'A' + list->tetro_nb;
 	y = 0;
-	i = 0;
 	x = 0;
 	while (list->tetros[y] && list->tetros[y][x] != ('A' + list->tetro_nb))
 	{

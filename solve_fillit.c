@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 15:11:08 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 18:27:25 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/18 11:47:42 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,11 +22,9 @@
 static int			*ft_rewind(int *coord, t_fillist *tmp, t_fillist *link
 					, char **res)
 {
-	t_fillist		*head;
 	int				len;
 
 	len = (int)ft_strlen(res[*coord]);
-	head = tmp;
 	if (coord[1] == len)
 	{
 		link = ft_go_back_list(link, tmp);
