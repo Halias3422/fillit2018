@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 11:41:45 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 18:19:34 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/18 14:58:47 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,6 +65,12 @@ static void			ft_free_list(t_fillist **list)
 	*list = NULL;
 }
 
+void				ft_error(void)
+{
+	ft_putendl("error");
+	exit(-1);
+}
+
 int					main(int ac, char **av)
 {
 	int				fd;
@@ -77,7 +83,8 @@ int					main(int ac, char **av)
 	err_str = "usage: ./fillit target_file\n";
 	if (ac == 2)
 	{
-		fd = open(av[1], O_RDONLY);
+		if ((fd = open(av[1], O_RDONLY)) == -1)
+			ft_error();
 		f_cont = ft_read_and_store_file(fd);
 		close(fd);
 		list = ft_fill_list(f_cont, list);
