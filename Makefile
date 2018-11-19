@@ -6,7 +6,7 @@
 #    By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/02 14:34:41 by vde-sain     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/19 11:23:51 by vde-sain    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/19 13:51:35 by vde-sain    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -53,6 +53,6 @@ fclean: clean
 		@(cd $(LIBFT) && $(MAKE) $@)
 		@echo "\033[1;31mFCLEAN FILLIT			OK"
 
-re: fclean all libft
+re: fclean all
 
 .PHONY : all clean fclean re
