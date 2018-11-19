@@ -6,7 +6,7 @@
 #    By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/02 14:34:41 by vde-sain     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/16 19:10:41 by vde-sain    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/19 11:23:51 by vde-sain    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -29,16 +29,15 @@ FLAGS = -Wall -Werror -Wextra
 
 LIBFT = ./libft/
 
-EXEC = $(LIBFT)/libft.a
+LIBFT.A = ./libft/libft.a
 
+all: libs $(NAME)
 
-all: $(NAME) $(EXEC)
-
-$(EXEC):
-		@(cd $(LIBFT) && $(MAKE))
-
-$(NAME): $(OBJ) $(EXEC)
+$(NAME): $(OBJ) $(LIBFT.A)
 		@$(CC) -o $(NAME) $(OBJ) libft/libft.a
+		@echo "\033[1;32mFILLIT				OK"
+libs:
+		@(cd $(LIBFT) && $(MAKE))
 
 %.o: %.c fillit.h
 		@$(CC) $(FLAGS) -I. -c $(SRC)
@@ -47,10 +46,12 @@ clean:
 		@rm -f $(OBJ)
 		@rm -f *.gch
 		@(cd $(LIBFT) && $(MAKE) $@)
+		@echo "\033[1;31mCLEAN FILLIT			OK"
 
 fclean: clean
 		@rm -f $(NAME)
 		@(cd $(LIBFT) && $(MAKE) $@)
+		@echo "\033[1;31mFCLEAN FILLIT			OK"
 
 re: fclean all libft
 

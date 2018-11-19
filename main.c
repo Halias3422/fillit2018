@@ -6,12 +6,13 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 11:41:45 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/18 14:58:47 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/19 13:33:31 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 static char			**ft_functions_call(t_fillist *list, char **res)
 {
@@ -79,12 +80,12 @@ int					main(int ac, char **av)
 	t_fillist		*list;
 	char			**res;
 
+	f_cont = NULL;
 	list = NULL;
 	err_str = "usage: ./fillit target_file\n";
 	if (ac == 2)
 	{
-		if ((fd = open(av[1], O_RDONLY)) == -1)
-			ft_error();
+		((fd = open(av[1], O_RDWR)) == -1) ? ft_error() : 0;
 		f_cont = ft_read_and_store_file(fd);
 		close(fd);
 		list = ft_fill_list(f_cont, list);

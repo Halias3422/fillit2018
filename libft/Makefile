@@ -6,7 +6,7 @@
 #    By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/03 17:34:31 by vde-sain     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/16 19:11:14 by vde-sain    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/19 11:21:45 by vde-sain    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -89,11 +89,14 @@ $(NAME): $(OBJ)
 
 %.o: %.c
 		@gcc -c -Wall -Werror -Wextra -I. $(SRC)
+		@echo "\033[1;32mLIBFT				OK"
 
 clean:
 		@rm -f *.o
+		@echo "\033[1;31mCLEAN LIBFT			OK"
 
 fclean: clean
 		@rm -f $(NAME)
+		@echo "FCLEAN LIBFT			OK"
 
 re: fclean all
