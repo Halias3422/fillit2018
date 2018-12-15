@@ -1,19 +1,19 @@
-:
-    OMNIBUS_BRANCH: 'master'
+variables:
+  OMNIBUS_BRANCH: 'master'
 
-    image: gcc
+image: gcc
 
-    build:
-        stage: build
-        script: make
-        artifacts:
-            paths:
-                - fillit
-            expire_in: 1 week
+build:
+  stage: build
+  script: make
+  artifacts:
+  paths:
+    - fillit
+  expire_in: 1 week
 
-            test_algo:
-                stage: find
-                script:
-                    - find . -name "fillit"
-                stage: test
-                script: ./fillit examples/valid_15
+test_algo:
+  stage: find
+  script:
+    - find . -name "fillit"
+  stage: test
+  script: ./fillit examples/valid_15
